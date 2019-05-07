@@ -43,8 +43,8 @@
   <ItemGroup>
     <Compile Include="ISeasonCollectionDAL.cs" />
     <Compile Include="ISeasonDAL.cs" />
-    <Compile Include="ITeamCollectionDAL.cs" />
-    <Compile Include="ITeamDAL.cs" />
+    <Compile Include="ITeamCollectionRepository.cs" />
+    <Compile Include="ITeamRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeasonStruct.cs" />
     <Compile Include="TeamStruct.cs" />

@@ -59,7 +59,9 @@
     <Compile Include="ITeamContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeasonDAL.cs" />
-    <Compile Include="TeamDAL.cs" />
+    <Compile Include="TeamSQLContext.cs" />
+    <Compile Include="TeamMemory.cs" />
+    <Compile Include="TeamRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Race.DAL.Interface\Race.DAL.Interface.csproj">

@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace Race.DAL
 {
-    public class TeamDAL : ITeamDAL, ITeamCollectionDAL
+    public class TeamSQLContext : ITeamContext
     {
         private SqlConnection connection;
         const string connectionstring =

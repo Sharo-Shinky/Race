@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Race.DAL.Interface
 {
-    public interface ITeamDAL
+    public interface ITeamRepository
     {
         void Update(TeamStruct teamStruct);
     }

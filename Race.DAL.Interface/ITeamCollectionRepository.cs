@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Race.DAL.Interface
 {
-    public interface ITeamCollectionDAL
+    public interface ITeamCollectionRepository
     {
         void Add(TeamStruct teamStruct);
         void Remove(int id);

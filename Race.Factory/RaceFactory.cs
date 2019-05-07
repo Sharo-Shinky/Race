@@ -10,14 +10,14 @@ namespace Race.Factory
 {
     public static class RaceFactory
     {
-        public static ITeamDAL CreateTeamDAL()
+        public static ITeamRepository CreateTeamDAL()
         {
-            return new TeamDAL();
+            return new TeamRepository(new TeamSQLContext());
         }
 
-        public static ITeamCollectionDAL CreateTeamCollectionDAL()
+        public static ITeamCollectionRepository CreateTeamCollectionDAL()
         {
-            return new TeamDAL();
+            return new TeamRepository(new TeamSQLContext());
         }
 
         public static ISeasonDAL CreateSeasonDAL()

@@ -18,7 +18,7 @@ namespace Race.LOGIC
         public int Oprichtingsjaar { get; private set; }
         public string Directeur { get; private set; }
 
-        private ITeamRepository TeamDAL = RaceFactory.CreateTeamDAL();
+        private ITeamRepository TeamRepository = RaceFactory.CreateTeamDAL();
 
         public Team(TeamStruct teamStruct)
         {
@@ -30,10 +30,10 @@ namespace Race.LOGIC
             Oprichtingsjaar = teamStruct.Oprichtingsjaar;
             Directeur = teamStruct.Directeur;
         }
-        public void Update()
+        public void Update(TeamStruct teamStruct)
         {
-            TeamStruct TeamStruct = new TeamStruct(Id, Naam, StandplaatsStad, StandplaatsLand, Hoofdsponsor, Oprichtingsjaar, Directeur);
-            TeamDAL.Update(TeamStruct);
+            //TeamStruct TeamStruct = new TeamStruct(Id, Naam, StandplaatsStad, StandplaatsLand, Hoofdsponsor, Oprichtingsjaar, Directeur);
+            TeamRepository.Update(teamStruct);
         }
     }
 }

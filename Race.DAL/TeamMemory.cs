@@ -9,9 +9,11 @@ namespace Race.DAL
 {
     class TeamMemory : ITeamContext
     {
+
+
         public void Add(TeamStruct teamStruct)
         {
-            throw new NotImplementedException();
+            
         }
 
         public List<TeamStruct> GetAll()

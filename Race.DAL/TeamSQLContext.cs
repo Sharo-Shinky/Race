@@ -77,19 +77,23 @@ namespace Race.DAL
 
         public void Update(TeamStruct teamStruct)
         {
-            using (connection)
+            using (GetConnection())
             {
                 string query = "UPDATE TEAM SET Naam = @Naam, StandplaatsStad = @StandplaatsStad, " +
                                "StandplaatsLand = @StandplaatsLand, Hoofdsponsor = @Hoofdsponsor, " +
-                               "Oprichtingsjaar = @Oprichtingsjaar, Directeur = @Directeur";
+                               "Oprichtingsjaar = @Oprichtingsjaar, Directeur = @Directeur WHERE Id = @Id";
                 connection.Open();
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@Naam", teamStruct.Naam);
-                command.Parameters.AddWithValue("@StandplaatsStad", teamStruct.StandplaatsStad);
-                command.Parameters.AddWithValue("@StandplaatsLand", teamStruct.StandplaatsLand);
-                command.Parameters.AddWithValue("@Hoofdsponsor", teamStruct.Hoofdsponsor);
-                command.Parameters.AddWithValue("@Oprichtingsjaar", teamStruct.Oprichtingsjaar);
-                command.Parameters.AddWithValue("@Directeur", teamStruct.Oprichtingsjaar);
+
+                command.Parameters.Add(new SqlParameter("@Naam", teamStruct.Naam));
+                command.Parameters.Add(new SqlParameter("@StandplaatsStad", teamStruct.StandplaatsStad));
+                command.Parameters.Add(new SqlParameter("@StandplaatsLand", teamStruct.StandplaatsLand));
+                command.Parameters.Add(new SqlParameter("@Hoofdsponsor",  teamStruct.Hoofdsponsor));
+                command.Parameters.Add(new SqlParameter("@Oprichtingsjaar", teamStruct.Oprichtingsjaar));
+                command.Parameters.Add(new SqlParameter("@Directeur", teamStruct.Directeur));
+                command.Parameters.Add(new SqlParameter("Id", teamStruct.Id));
+                
+                command.ExecuteNonQuery();
             }
         }
     }

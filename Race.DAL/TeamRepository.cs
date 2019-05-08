@@ -9,29 +9,37 @@ namespace Race.DAL
 {
     public class TeamRepository : ITeamRepository, ITeamCollectionRepository
     {
-        public TeamRepository(ITeamContext context)
+        public ITeamContext TeamContext { get; set; }
+
+        public TeamRepository(ITeamContext teamContext)
         {
-            
+            TeamContext = teamContext;
         }
 
         public void Add(TeamStruct teamStruct)
         {
-            throw new NotImplementedException();
+            TeamContext.Add(teamStruct);
         }
 
         public List<TeamStruct> GetAll()
         {
-            throw new NotImplementedException();
+            List<TeamStruct> teamStructList = new List<TeamStruct>();
+            foreach (TeamStruct teamStruct in TeamContext.GetAll())
+            {
+                teamStructList.Add(teamStruct);
+            }
+
+            return teamStructList;
         }
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            TeamContext.Remove(id);
         }
 
         public void Update(TeamStruct teamStruct)
         {
-            throw new NotImplementedException();
+            TeamContext.Update(teamStruct);
         }
     }
 }

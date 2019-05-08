@@ -17,7 +17,7 @@ namespace Race.LOGIC.Tests
         public void AddTest()
         {
             //arrange
-            TeamStruct teamStruct = new TeamStruct(1, "Peter", "Bayer", "Duitsland", "Sharo", 1998, "Shinky");
+            TeamStruct teamStruct = new TeamStruct(0, "Ali", "Breda", "Nederland", "Apple", 2000, "Sharo");
             TeamCollection.Add(teamStruct);
 
             Team testTeam = new Team(teamStruct);
@@ -43,18 +43,16 @@ namespace Race.LOGIC.Tests
         [TestMethod()]
         public void UpdateTest()
         {
-            TeamStruct teamStruct = new TeamStruct(3, "Peter", "Bayer", "Duitsland", "Sharo", 1998, "Shinky");
+            TeamStruct teamStruct = new TeamStruct(2, "Thomas", "Tilburg", "Nederland", "PSV", 2018, "Yeah");
             Team team = new Team(teamStruct);
-
-            team.Update();
+            
+            team.Update(teamStruct);
         }
 
         [TestMethod()]
         public void RemoveTest()
         {
             TeamCollection.Remove(4);
-
-
         }
     }
 }

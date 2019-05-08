@@ -18,7 +18,7 @@ namespace Race.LOGIC
         public int Oprichtingsjaar { get; private set; }
         public string Directeur { get; private set; }
 
-        private ITeamRepository TeamRepository = RaceFactory.CreateTeamDAL();
+        private ITeamRepository TeamRepository = RaceFactory.CreateTeamSQLContext();
 
         public Team(TeamStruct teamStruct)
         {

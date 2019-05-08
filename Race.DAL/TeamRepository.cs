@@ -9,7 +9,7 @@ namespace Race.DAL
 {
     public class TeamRepository : ITeamRepository, ITeamCollectionRepository
     {
-        public ITeamContext TeamContext { get; set; }
+        private ITeamContext TeamContext;
 
         public TeamRepository(ITeamContext teamContext)
         {

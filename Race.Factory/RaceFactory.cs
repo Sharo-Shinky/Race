@@ -10,15 +10,27 @@ namespace Race.Factory
 {
     public static class RaceFactory
     {
-        public static ITeamRepository CreateTeamDAL()
+        public static ITeamRepository CreateTeamSQLContext()
         {
             return new TeamRepository(new TeamSQLContext());
         }
 
-        public static ITeamCollectionRepository CreateTeamCollectionDAL()
+        public static ITeamRepository CreateTeamMemoryContect()
+        {
+            return new TeamRepository(new TeamMemoryContext());
+        }
+
+        public static ITeamCollectionRepository CreateTeamCollectionSQLContext()
         {
             return new TeamRepository(new TeamSQLContext());
         }
+
+        public static ITeamCollectionRepository CreateTeamCollectionMemoryContext()
+        {
+            return new TeamRepository(new TeamMemoryContext());
+        }
+
+
 
         public static ISeasonDAL CreateSeasonDAL()
         {

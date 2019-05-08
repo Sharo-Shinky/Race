@@ -10,7 +10,7 @@ namespace Race.LOGIC
 {
     public static class TeamCollection
     {
-        public static ITeamCollectionRepository TeamCollectionDAL = RaceFactory.CreateTeamCollectionDAL();
+        public static ITeamCollectionRepository TeamCollectionDAL = RaceFactory.CreateTeamCollectionSQLContext();
         public static void Add(TeamStruct teamStruct)
         {
             TeamCollectionDAL.Add(teamStruct);

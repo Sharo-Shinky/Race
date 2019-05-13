@@ -10,22 +10,15 @@ namespace Race.DAL
 {
     public class TeamSQLContext : ITeamContext
     {
-        private SqlConnection connection;
-        const string connectionstring =
-            @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\249519\source\repos\Race\Race.DAL\RaceDatabase.mdf;Integrated Security = True";
-
-        private SqlConnection GetConnection()
-        {
-            return connection = new SqlConnection(connectionstring);
-        }
+        DatabaseConnection DbConn = new DatabaseConnection();
         public void Add(TeamStruct teamStruct)
         {
-            using (GetConnection())
+            using (DbConn.connection)
             {
                 string query = "INSERT INTO Team(Naam, StandplaatsStad, StandplaatsLand, Hoofdsponsor, Oprichtingsjaar, Directeur)" +
                                "Values (@Naam, @StandplaatsStad, @StandplaatsLand, @Hoofdsponsor, @Oprichtingsjaar, @Directeur)";
-                connection.Open();
-                SqlCommand command = new SqlCommand(query, connection);
+                DbConn.connection.Open();
+                SqlCommand command = new SqlCommand(query, DbConn.connection);
                 command.Parameters.Add(new SqlParameter("@Naam", teamStruct.Naam));
                 command.Parameters.Add(new SqlParameter("@StandplaatsStad", teamStruct.StandplaatsStad));
                 command.Parameters.Add(new SqlParameter("@StandplaatsLand", teamStruct.StandplaatsLand));
@@ -39,11 +32,11 @@ namespace Race.DAL
         public List<TeamStruct> GetAll()
         {
             List<TeamStruct> teamStructList = new List<TeamStruct>();
-            using (GetConnection())
+            using (DbConn.connection)
             {
                 string query = "SELECT * FROM Team";
-                connection.Open();
-                SqlCommand command = new SqlCommand(query, connection);
+                DbConn.connection.Open();
+                SqlCommand command = new SqlCommand(query, DbConn.connection);
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -62,11 +55,11 @@ namespace Race.DAL
 
         public void Remove(int id)
         {
-            using (GetConnection())
+            using (DbConn.connection)
             {
                 string query = "DELETE FROM Team WHERE Id = @Id";
-                connection.Open();
-                SqlCommand command = new SqlCommand(query, connection);
+                DbConn.connection.Open();
+                SqlCommand command = new SqlCommand(query, DbConn.connection);
                 SqlParameter param = new SqlParameter();
                 param.ParameterName = "@Id";
                 param.Value = id;
@@ -77,13 +70,13 @@ namespace Race.DAL
 
         public void Update(TeamStruct teamStruct)
         {
-            using (GetConnection())
+            using (DbConn.connection)
             {
                 string query = "UPDATE TEAM SET Naam = @Naam, StandplaatsStad = @StandplaatsStad, " +
                                "StandplaatsLand = @StandplaatsLand, Hoofdsponsor = @Hoofdsponsor, " +
                                "Oprichtingsjaar = @Oprichtingsjaar, Directeur = @Directeur WHERE Id = @Id";
-                connection.Open();
-                SqlCommand command = new SqlCommand(query, connection);
+                DbConn.connection.Open();
+                SqlCommand command = new SqlCommand(query, DbConn.connection);
 
                 command.Parameters.Add(new SqlParameter("@Naam", teamStruct.Naam));
                 command.Parameters.Add(new SqlParameter("@StandplaatsStad", teamStruct.StandplaatsStad));

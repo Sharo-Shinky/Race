@@ -17,7 +17,7 @@ namespace Race.LOGIC.Tests
         public void AddTest()
         {
             //arrange
-            TeamStruct teamStruct = new TeamStruct(0, "Ali", "Breda", "Nederland", "Apple", 2000, "Sharo");
+            TeamStruct teamStruct = new TeamStruct(0, "Test", "13", "05", "Apple", 2019, "Sharo");
             TeamCollection.Add(teamStruct);
 
             Team testTeam = new Team(teamStruct);
